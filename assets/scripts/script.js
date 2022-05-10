@@ -5,6 +5,9 @@ let cont = 0;
 let x = 0;
 let points = 0;
 let startQuiz = document.querySelector(".start");
+let leaderboard = document.querySelector(".leaderboard");
+let highScore = document.querySelector(".high-scores");
+let title = document.querySelector(".title");
 let timer = document.querySelector(".timer");
 let quizTitle = document.querySelector(".quiz-title");
 let wQuestion = document.querySelector(".question");
@@ -37,8 +40,12 @@ let submitbtn = document.createElement("button");
 let h1 = document.createElement("h1");
 let h2 = document.createElement("h2")
 
+let ol
+
+// Sets styles for elements
 submitbtn.setAttribute("class", "submit");
 
+// Sets content in some elements
 submitbtn.textContent = "Submit"
 label.textContent = "Nickname: "
 h2R.textContent = "Correct!";
@@ -212,9 +219,28 @@ function SaveResults() {
         let nick = nickname.value;
         let pnts = points;
 
-        localStorage.setItem("nickname", nick);
-        localStorage.setItem("points", pnts);
+        localStorage.setItem(`${nick}`, nick);
+        localStorage.setItem(`${nick}-points`, pnts);
+        ResetGame();
     })
+}
+function ResetGame () {
+    // Removes all content from previous quiz 
+    h1.remove();
+    h2.remove();
+    label.remove();
+    nickname.remove();
+    submitbtn.remove();
+    h2R.remove();
+    h2W.remove();
+
+    SetStart();
+
+}
+function SetStart () {
+    title.appendChild(quizTitle);
+    content.appendChild(description);
+    buttons.appendChild(startQuiz);
 }
 
 function CheckCorrectAnsw1() {
@@ -227,6 +253,7 @@ function CheckCorrectAnsw1() {
         } else {
             QuizEnd();
         }
+        h2W.remove();
         generateQuestions();
     } else {
         resultWritten.appendChild(h2W);
@@ -237,6 +264,7 @@ function CheckCorrectAnsw1() {
         } else {
             QuizEnd();
         }
+        h2R.remove();
         generateQuestions();
     }
 }
@@ -250,6 +278,7 @@ function CheckCorrectAnsw2() {
         } else {
             QuizEnd();
         }
+        h2W.remove();
         generateQuestions();
     } else {
         resultWritten.appendChild(h2W);
@@ -260,6 +289,7 @@ function CheckCorrectAnsw2() {
         } else {
             QuizEnd();
         }
+        h2R.remove();
         generateQuestions();
     }
 }
@@ -298,6 +328,7 @@ function CheckCorrectAnsw4() {
         } else {
             QuizEnd();
         }
+        h2W.remove();
         generateQuestions();
     } else {
         resultWritten.appendChild(h2W);
@@ -308,8 +339,14 @@ function CheckCorrectAnsw4() {
         } else {
             QuizEnd();
         }
+        h2R.remove();
         generateQuestions();
     }
+}
+
+function GetLeaderboard () {
+    removeStart();
+
 }
 
 // On click of ther start quiz button, the quiz start.
@@ -319,3 +356,5 @@ answ2.addEventListener("click", CheckCorrectAnsw2);
 answ3.addEventListener("click", CheckCorrectAnsw3);
 answ4.addEventListener("click", CheckCorrectAnsw4);
 
+
+highScore.addEventListener("click", GetLeaderboard);
