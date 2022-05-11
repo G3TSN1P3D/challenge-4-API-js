@@ -45,7 +45,12 @@ let ol = document.createElement("ol");
 let li = document.createElement("li");
 
 // Sets styles for elements
+answ1.setAttribute("class", "answer-btn");
+answ2.setAttribute("class", "answer-btn");
+answ3.setAttribute("class", "answer-btn");
+answ4.setAttribute("class", "answer-btn");
 submitbtn.setAttribute("class", "submit");
+nickname.setAttribute("class", "score-nick");
 
 // Sets content in some elements
 submitbtn.textContent = "Submit"
@@ -172,6 +177,7 @@ function removeStart() {
     quizTitle.remove();
     startQuiz.remove();
     highScore.remove();
+    leaderboard.remove();
 }
 function generateQuestions() {
     h1Ques.textContent = Questions[cont].question;
@@ -194,6 +200,7 @@ function generateQuestions() {
 
 }
 function countdown() {
+    document.querySelector("header").style.justifyContent="center";
     timeInterval = setInterval(function () {
         if (timeLeft >= 1) {
             timer.textContent = `Timer: ${timeLeft}`;
@@ -212,6 +219,7 @@ function QuizEnd() {
 function ClearQues() {
     wQuestion.remove();
     quizOptions.remove();
+    resultWritten.remove();
 }
 function SaveResults() {
     h1.textContent = "All Done!";
