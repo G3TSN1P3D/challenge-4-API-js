@@ -4,6 +4,7 @@ let timeLeft = 75;
 let cont = 0;
 let x = 0;
 let points = 0;
+let score = [];
 let startQuiz = document.querySelector(".start");
 let leaderboard = document.querySelector(".leaderboard");
 let highScore = document.querySelector(".high-scores");
@@ -40,7 +41,8 @@ let submitbtn = document.createElement("button");
 let h1 = document.createElement("h1");
 let h2 = document.createElement("h2")
 
-let ol
+let ol = document.createElement("ol");
+let li = document.createElement("li");
 
 // Sets styles for elements
 submitbtn.setAttribute("class", "submit");
@@ -155,15 +157,21 @@ let Questions = [{
 
 // function to start the quiz
 function StartTheQuiz() {
+    timeLeft = 75;
+    cont = 0;
+    x = 0;
+    points = 0;
     removeStart();
     countdown();
     generateQuestions();
+    resultWritten.setAttribute("style", "visibility: visible")
 
 }
 function removeStart() {
     description.remove();
     quizTitle.remove();
     startQuiz.remove();
+    highScore.remove();
 }
 function generateQuestions() {
     h1Ques.textContent = Questions[cont].question;
@@ -219,28 +227,14 @@ function SaveResults() {
         let nick = nickname.value;
         let pnts = points;
 
-        localStorage.setItem(`${nick}`, nick);
-        localStorage.setItem(`${nick}-points`, pnts);
+        localStorage.setItem(`${nick}`, JSON.stringify(nick));
+        localStorage.setItem(`${nick}-points`, JSON.stringify(pnts));
         ResetGame();
     })
 }
 function ResetGame () {
     // Removes all content from previous quiz 
-    h1.remove();
-    h2.remove();
-    label.remove();
-    nickname.remove();
-    submitbtn.remove();
-    h2R.remove();
-    h2W.remove();
-
-    SetStart();
-
-}
-function SetStart () {
-    title.appendChild(quizTitle);
-    content.appendChild(description);
-    buttons.appendChild(startQuiz);
+    document.location.reload();
 }
 
 function CheckCorrectAnsw1() {
@@ -346,7 +340,8 @@ function CheckCorrectAnsw4() {
 
 function GetLeaderboard () {
     removeStart();
-
+    h1.textContent = "Couln't get it to work :(";
+    content.appendChild(h1);
 }
 
 // On click of ther start quiz button, the quiz start.

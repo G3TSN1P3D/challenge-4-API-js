@@ -6,35 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+
     <title>Document</title>
 </head>
 
 <body>
     <header>
         <div class="leaderboard">
-            <h3 class="high-scores">View High Scores</h3>
+            <h3 class="high-scores ">View High Scores</h3>
         </div>
         <div class="timer">
         </div>
     </header>
-    <main>
-        <section class="container">
-            <div class="title"><h1 class="quiz-title">Coding Quiz Challenge</h1></div>
-            <div class="question"></div>
-            <div class="content">
-                <div class="description">
-                    <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-                    </p>
+    <main class="min-vh-100 d-flex align-items-center bg-dark">
+        <Section class="w-100 row justify-content-center">
+            <section class="container col-10 col-md-6 col-lg-5">
+                <div class="title">
+                    <h1 class="quiz-title display-3 text-center text-white">Coding Quiz Challenge</h1>
                 </div>
-                <ol class="quiz-options"></ol>
-                
-            </div>
-            <div class="buttons">
-                <button class="start" role="button">Start Quiz</button>
-            </div>
-        </section>
-        <section class="right-wrong">
-            <div class="result-written"></div>
+                <div class="bg-white my-4 p-4 rounded">
+                    <div class="question"></div>
+                    <div class="content">
+                        <div class="description">
+                            <p>Try to answer the following code-related questions within the time limit. Keep in mind
+                                that
+                                incorrect answers will penalize your score/time by ten seconds!
+                            </p>
+                        </div>
+                        <div class="buttons">
+                            <button class="start" role="button">Start Quiz</button>
+                        </div>
+                        <div>
+                            <ol class="quiz-options"></ol>
+                        </div>
+
+                    </div>
+                    <div class="right-wrong">
+                        <div class="result-written"></div>
+                    </div>
+                </div>
+
+            </section>
+        </Section>
+        <section >
+            
         </section>
     </main>
     <script src="./assets/scripts/script.js"></script>
