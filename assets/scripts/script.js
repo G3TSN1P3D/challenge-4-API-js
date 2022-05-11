@@ -340,7 +340,7 @@ function CheckCorrectAnsw4() {
 
 function GetLeaderboard () {
     removeStart();
-    h1.textContent = "Couln't get it to work :(";
+    h1.textContent = "Couldn't get it to work :(";
     content.appendChild(h1);
 }
 
